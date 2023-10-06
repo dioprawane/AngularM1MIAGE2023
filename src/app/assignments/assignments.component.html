@@ -1,6 +1,9 @@
 <p>{{titre}}</p>
 
-<form ngForm (submit)="onSubmit($event)" #assignmentForm>
+<form ngForm (submit)="onSubmit($event)" #assignmentForm class="form">
+  <mat-form-field>
+    <input matInput placeholder="Nom du devoir" name="nom" ngModel>
+  </mat-form-field>
   <button mat-stroked-button 
   color="primary"
   [disabled]="!ajoutActive">Ajouter un devoir</button>
