@@ -1,0 +1,18 @@
+<p>{{titre}}</p>
+
+<form ngForm (submit)="onSubmit($event)" #assignmentForm>
+  <button mat-stroked-button 
+  color="primary"
+  [disabled]="!ajoutActive">Ajouter un devoir</button>
+</form>
+
+<div *ngFor="let assignment of assignments"
+[ngStyle]="{'color':assignment.rendu ? 'green':'red'}">
+  <p appRendu *ngIf="assignment.rendu; else nonSoumis">
+    Devoir intitulé "{{assignment.nom}}" rendu le {{assignment.dateRendu}} rendu par l'étudiant : {{assignment.nomEtu}}.
+  </p>
+
+<ng-template #nonSoumis>
+    <p>Le devoir intitulé "{{assignment.nom}}" à rendre le {{assignment.dateRendu}} n'a pas été rendu par l'étudiant : {{assignment.nomEtu}}.</p>
+</ng-template>
+</div>
